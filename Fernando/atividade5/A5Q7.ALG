@@ -6,6 +6,7 @@ Var
    valEmprestimo: real
    quantParcelas: inteiro
    reset1: real
+   reset2: real
    processo: real
 
 PROCEDIMENTO "teste"
@@ -27,17 +28,20 @@ inicio
       leia (reset1)
       limpatela
    senao
-   fimse
-   escreva("escolha em quantas vezes deseja parcelar:")
-   leia(quantParcelas)
+      escreva("escolha em quantas vezes deseja parcelar:")
+      leia(quantParcelas)
       processo <- (valEmprestimo / quantParcelas)
       escreval("")
       se processo < salBruto * 0.30 entao
          escreval("ESTE EMPRÉSTIMO PODE SER REALIZADO!!!")
       senao
          escreval("ESTE EMPRÉSTIMO NÂO PODE SER REALIZADO!!!")
-         limpatela
       fimse
+      escreval
+      escreval("DIGITE QUALQUER COISA PARA CONINUAR")
+      leia (reset2)
+      limpatela
+   fimse
 
 
 FIMPROCEDIMENTO
