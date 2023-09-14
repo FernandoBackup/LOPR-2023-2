@@ -6,13 +6,13 @@ Var
    nota4: real
    media: real
 Inicio
-   escreval("informe sua nota do 1° bimestre:")
+   escreval("informe sua nota do 1ï¿½ bimestre:")
    leia(nota1)
-   escreval("informe sua nota do 2° bimestre:")
+   escreval("informe sua nota do 2ï¿½ bimestre:")
    leia(nota2)
-   escreval("informe sua nota do 3° bimestre:")
+   escreval("informe sua nota do 3ï¿½ bimestre:")
    leia(nota3)
-   escreval("informe sua nota do 4° bimestre:")
+   escreval("informe sua nota do 4ï¿½ bimestre:")
    leia(nota4)
    media <- (nota1+nota2+nota3+nota4)/4
    escreval("")
@@ -26,3 +26,4 @@ Inicio
       escreval("APROVADO!!!")
    fimse
 Fimalgoritmo
+
