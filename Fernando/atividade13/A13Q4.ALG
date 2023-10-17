@@ -1,17 +1,15 @@
 Algoritmo "A13Q4"
 Var
-   primos: vetor[1..100] de inteiro
-   retorn: logico
    quant: inteiro
    i: inteiro
-
+   candidato: inteiro
 
 FUNCAO acharPrimos(candidato: inteiro): logico
 VAR
    ehPrimo: logico
 INICIO
    ehPrimo <- verdadeiro
-   para i de 1 ate quant faca
+   para i de 2 ate candidato-1 faca
       se (candidato % i = 0) entao
          ehPrimo <- falso
          interrompa
@@ -24,9 +22,9 @@ Inicio
    escreval("Informe um intevalo:")
    leia(quant)
    escreval
-   para i de 2 até quant faca
-      se acharPrimos(i) entao
-         escreva(i)
+   para candidato de 2 até quant faca
+      se acharPrimos(candidato) entao
+         escreva(candidato)
       fimse
    fimpara
 Fimalgoritmo
