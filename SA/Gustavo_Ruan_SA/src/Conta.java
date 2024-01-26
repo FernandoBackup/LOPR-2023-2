@@ -94,11 +94,11 @@ public class Conta {
         }while(Validacao.verificarExistenciaId(randomInt, listaTroca));
         pt.setId(randomInt);
         pt.setNome(EntradaSaida.inserirDadosCadastrais("Nome"));
-        pt.setCategoria(EntradaSaida.inserirDadosCadastrais("Categoria"));
-        pt.setDescricao(EntradaSaida.inserirDadosCadastrais("Descrição"));
-        pt.setEstado(EntradaSaida.inserirDadosCadastrais("Estado"));
-        pt.setGarantia(EntradaSaida.inserirDadosCadastrais("Garantia"));
-        pt.setTempoUso(EntradaSaida.inserirDadosCadastrais("Tempo de uso"));
+        pt.setCategoria(EntradaSaida.inserirDadosCadastrais("\nCategoria"));
+        pt.setDescricao(EntradaSaida.inserirDadosCadastrais("\nDescrição"));
+        pt.setEstado(EntradaSaida.inserirDadosCadastrais("\nEstado"));
+        pt.setGarantia(EntradaSaida.inserirDadosCadastrais("\nGarantia"));
+        pt.setTempoUso(EntradaSaida.inserirDadosCadastrais("\nTempo de uso"));
         this.listaTroca.add(pt); 
         EntradaSaida.escreverMensagem("Anuncio criado");
     }
@@ -107,7 +107,7 @@ public class Conta {
         String retorno = "";
         int i = 0;
         if(listaTroca.isEmpty()){
-            retorno +="Nenhuma troca no momento";
+            retorno +=EntradaSaida.inserirCorMensagem()+"Nenhuma troca no momento"+EntradaSaida.removerCorMensagem();
         }else{
             for (ProdutoTroca t : this.listaTroca) {
                 i++;
@@ -127,39 +127,44 @@ public class Conta {
     public void excluirTroca(){
         int id = EntradaSaida.inserirInt("Digite o id da troca");
         int posicao = 0;
+        boolean validacaoId = false;
         for (ProdutoTroca pt : listaTroca) {
             if(pt.getId() == id){
                 posicao = listaTroca.indexOf(pt);
+                validacaoId = true;
             }
         }
-        listaTroca.remove(posicao);
-        EntradaSaida.escreverMensagem("Excluido com sucesso!");
+        if(validacaoId == true){
+            listaTroca.remove(posicao);
+            EntradaSaida.escreverMensagem("Excluido com sucesso!\n");
+        }else{EntradaSaida.escreverMensagem(EntradaSaida.inserirCorMensagem()+"ID não encontrado!!!"+EntradaSaida.removerCorMensagem());}
     }
 
-    public void removerUsuarioAdmin(String nomeUsuario,BancoDados bd){
-        boolean validacao = false;
+    public boolean removerUsuarioAdmin(String nomeUsuario,BancoDados bd){
+        boolean usuarioExistente = false;
         int posicao = 0;
 
-        for (ProdutoTroca pt : this.listaTroca) { //verificar se está funcional 
+        for (ProdutoTroca pt : this.listaTroca) { 
             if(pt.getDono().getNomeUsuario().equals(nomeUsuario)){
-                validacao = true;
+                usuarioExistente = true;
                 posicao=listaTroca.indexOf(pt);
             }
         }
-        if(validacao){
+        if(usuarioExistente){
             listaTroca.remove(posicao);
         }
 
         posicao=0;
-        validacao = false;   
-        for (Conta c : bd.contas) { 
+        usuarioExistente = false;   
+        for (Conta c : bd.listaContas) { 
             if(c.getNomeUsuario().equals(nomeUsuario)){
-                validacao=true;
-                posicao=bd.contas.indexOf(c);
+                usuarioExistente=true;
+                posicao=bd.listaContas.indexOf(c);
             }
         }
-        if(validacao){
-            bd.contas.remove(posicao);
-        }else{EntradaSaida.escreverMensagem("Nenhum usúario encontrado");}
+        if(usuarioExistente){
+            bd.listaContas.remove(posicao);
+        }else{EntradaSaida.escreverMensagem(EntradaSaida.inserirCorMensagem()+"Nenhum usúario encontrado"+EntradaSaida.removerCorMensagem());}
+        return usuarioExistente;
     }
 }

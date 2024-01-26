@@ -1,16 +1,38 @@
-import java.util.ArrayList;
-
 public class CentroDistribuicao {
     
     private String localDistribuicao;
-    private String liderOrganizacao;
-    private String cpfLider;
-    private String senha;
     private String nomeCampanha;
     private String descricaoCampanha;
+    private String categoria;
+    private String produtosArrecadados;
+    private String adminCampanha;
 
-    ArrayList<ProdutoDoacao> listaDoacao=new ArrayList<ProdutoDoacao>();
-
+    public String getAdminCampanha() {
+        return adminCampanha;
+    }
+    public void setAdminCampanha(String adminCampanha) {
+        this.adminCampanha = adminCampanha;
+    }
+    public CentroDistribuicao(String localDistribuicao, String nomeCampanha, String descricaoCampanha, String categoria,
+            String produtosArrecadados) {
+        this.localDistribuicao = localDistribuicao;
+        this.nomeCampanha = nomeCampanha;
+        this.descricaoCampanha = descricaoCampanha;
+        this.categoria = categoria;
+        this.produtosArrecadados = produtosArrecadados;
+    }
+    public String getProdutosArrecadados() {
+        return produtosArrecadados;
+    }
+    public void setProdutosArrecadados(String produtosArrecadados) {
+        this.produtosArrecadados = produtosArrecadados;
+    }
+    public String getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
     public String getDescricaoCampanha(){
         return descricaoCampanha;
     }
@@ -23,28 +45,11 @@ public class CentroDistribuicao {
     public void setNomeCampanha(String nomeCampanha){
         this.nomeCampanha = nomeCampanha;
     }
-    public String getCpfLider() {
-        return cpfLider;
-    }
-    public void setCpfLider(String cpfLider) {
-        this.cpfLider = cpfLider;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+
     public String getLocalDistribuicao() {
         return localDistribuicao;
     }
     public void setLocalDistribuicao(String centroDistribuicao) {
         this.localDistribuicao = centroDistribuicao;
-    }
-    public String getLiderOrganizacao() {
-        return liderOrganizacao;
-    }
-    public void setLiderOrganizacao(String liderOrganizacao) {
-        this.liderOrganizacao = liderOrganizacao;
     }
 }
